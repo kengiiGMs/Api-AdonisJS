@@ -26,3 +26,4 @@ Route.delete('/estudante/:estudante_id', 'DeletarEstudantesController.executar')
 Route.put('/estudante/:estudante_id', 'AtualizarEstudantesController.executar');
 
 Route.post('/usuario', 'UsuarioCadastrarController.executar');
+Route.post('/login', 'LoginController.executar');
