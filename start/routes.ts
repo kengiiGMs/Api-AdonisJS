@@ -20,10 +20,12 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.post('/estudante', 'CadastrarEstudantesController.executar');
-Route.get('/estudante', 'ListarEstudantesController.executar');
-Route.delete('/estudante/:estudante_id', 'DeletarEstudantesController.executar');
-Route.put('/estudante/:estudante_id', 'AtualizarEstudantesController.executar');
-
 Route.post('/usuario', 'UsuarioCadastrarController.executar');
 Route.post('/login', 'LoginController.executar');
+
+Route.group(() => {
+    Route.get('/estudante', 'ListarEstudantesController.executar');
+    Route.post('/estudante', 'CadastrarEstudantesController.executar');
+    Route.delete('/estudante/:estudante_id', 'DeletarEstudantesController.executar');
+    Route.put('/estudante/:estudante_id', 'AtualizarEstudantesController.executar');
+}).middleware('auth')
