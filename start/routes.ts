@@ -31,5 +31,6 @@ Route.group(() => {
     Route.delete('/estudante/:estudante_id', 'DeletarEstudantesController.executar');
     Route.put('/estudante/:estudante_id', 'AtualizarEstudantesController.executar');
     Route.post('/sair', 'SairController.executar');
+    Route.post('/validarToken', 'ValidarTokensController.executar');
 
 }).middleware('auth')
