@@ -5,7 +5,6 @@ export default class DeletarEstudantesController {
     public async executar({ request, response, params }: HttpContextContract) {
         try {
             const estudanteId = params.estudante_id;
-            console.log(estudanteId);
             const estudanteExiste = await Estudante.findBy('id', estudanteId);
 
             if (!estudanteExiste) {
