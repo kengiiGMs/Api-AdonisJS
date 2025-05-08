@@ -23,3 +23,4 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.post('/estudante', 'CadastrarEstudantesController.executar');
 Route.get('/estudante', 'ListarEstudantesController.executar');
 Route.delete('/estudante/:estudante_id', 'DeletarEstudantesController.executar');
+Route.put('/estudante/:estudante_id', 'AtualizarEstudantesController.executar');
