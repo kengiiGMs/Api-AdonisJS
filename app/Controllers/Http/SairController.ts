@@ -7,7 +7,7 @@ export default class SairController {
             return response.json({ message: "Deslogado" })
         } catch (err) {
             console.error(err.message);
-            return response.status(500).json({ error: 'Erro ao logar o usuário' })
+            return response.status(500).json({ error: 'Erro ao efetuar logout o usuário' })
         }
     }
 }
