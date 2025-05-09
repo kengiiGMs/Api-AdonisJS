@@ -12,8 +12,8 @@ export default class AtualizarEstudantesController {
                 return response.status(500).json({ error: 'Erro esse estudante não existe' });
             }
 
-            if (estudanteExiste.email != resultado.email) {
-                const emailExiste = await Estudante.findBy('email', resultado.email);
+            if (estudanteExiste.email !== resultado.email) {
+                const emailExiste = await Estudante.query().where('email', resultado.email).whereNot('id', estudanteId).first();
 
                 if (emailExiste) {
                     return response.status(500).json({ error: 'Erro esse email já existe' });
