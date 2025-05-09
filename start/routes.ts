@@ -30,6 +30,7 @@ Route.group(() => {
     Route.post('/estudante', 'CadastrarEstudantesController.executar');
     Route.delete('/estudante/:estudante_id', 'DeletarEstudantesController.executar');
     Route.put('/estudante/:estudante_id', 'AtualizarEstudantesController.executar');
+    Route.post('/estudante/:estudante_id', 'BuscarDadosEstudantesController.executar');
     Route.post('/sair', 'SairController.executar');
     Route.post('/validarToken', 'ValidarTokensController.executar');
 
