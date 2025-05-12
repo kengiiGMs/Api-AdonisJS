@@ -5,7 +5,8 @@
  * file.
  */
 
-import Usuario from 'App/Models/Usuario'
+import Estudante from 'App/Models/Estudante'
+import Diretor from 'App/Models/Diretor'
 
 declare module '@ioc:Adonis/Addons/Auth' {
   /*
@@ -33,9 +34,14 @@ declare module '@ioc:Adonis/Addons/Auth' {
     | different Lucid models.
     |
     */
-    user: {
-      implementation: LucidProviderContract<typeof Usuario>
-      config: LucidProviderConfig<typeof Usuario>
+    estudante: {
+      implementation: LucidProviderContract<typeof Estudante>
+      config: LucidProviderConfig<typeof Estudante>
+    }
+
+    diretor: {
+      implementation: LucidProviderContract<typeof Diretor>
+      config: LucidProviderConfig<typeof Diretor>
     }
   }
 
@@ -64,10 +70,15 @@ declare module '@ioc:Adonis/Addons/Auth' {
     | to authenticate requests.
     |
     */
-    api: {
-      implementation: OATGuardContract<'user', 'api'>
-      config: OATGuardConfig<'user'>
-      client: OATClientContract<'user'>
+    estudante: {
+      implementation: OATGuardContract<'estudante', 'estudante'>
+      config: OATGuardConfig<'estudante'>
+      client: OATClientContract<'estudante'>
+    }
+    diretor: {
+      implementation: OATGuardContract<'diretor', 'diretor'>
+      config: OATGuardConfig<'diretor'>
+      client: OATClientContract<'diretor'>
     }
   }
 }
