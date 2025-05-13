@@ -56,6 +56,12 @@ export default class ExceptionHandler extends HttpExceptionHandler {
       })
     }
 
+    if (error.code == 'E_WRONG_CREDENTIAL') {
+      return response.status(401).send({
+        error: 'Erro crendenciais erradas'
+      })
+    }
+
     return response.status(500).send({
       error: 'Erro interno no servidor',
       detalhes: process.env.NODE_ENV === 'development' ? {
@@ -65,3 +71,4 @@ export default class ExceptionHandler extends HttpExceptionHandler {
     })
   }
 }
+

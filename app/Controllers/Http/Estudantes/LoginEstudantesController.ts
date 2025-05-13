@@ -24,7 +24,7 @@ export default class LoginEstudantesController {
         }
 
         if (!(await Hash.verify(login.password, dadosRequisicao.password))) {
-            throw new ApiErrorException('Credenciais erradas', 401, 'E_WRONG_CREDENITAL')
+            throw new ApiErrorException('Credenciais erradas', 401, 'E_WRONG_CREDENTIAL')
         }
 
         const token = await auth.use('estudante').generate(login, {
