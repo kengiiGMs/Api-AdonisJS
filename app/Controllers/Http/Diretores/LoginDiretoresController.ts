@@ -9,7 +9,7 @@ export default class LoginDiretoresController {
     public async handle({ auth, request, response }: HttpContextContract) {
         const dadosNecessarios = schema.create({
             email: schema.string([rules.email()]),
-            password: schema.string([rules.minLength(5), rules.confirmed()])
+            password: schema.string([rules.minLength(5)])
         })
 
         const dadosRequisicao = await request.validate({

@@ -56,7 +56,7 @@ export default class ExceptionHandler extends HttpExceptionHandler {
       })
     }
 
-    if (error.code == 'E_WRONG_CREDENTIAL') {
+    if (error.code == 'E_WRONG_CREDENITAL') {
       return response.status(401).send({
         error: 'Erro crendenciais erradas'
       })
