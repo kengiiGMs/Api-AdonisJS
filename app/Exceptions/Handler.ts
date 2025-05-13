@@ -44,6 +44,17 @@ export default class ExceptionHandler extends HttpExceptionHandler {
       })
     }
 
+    if (error.code == 'E_ID_NO_EXIST') {
+      return response.status(404).send({
+        error: 'Id não encontrado na url'
+      })
+    }
+
+    if (error.code == 'E_ESTUDANTE_NO_EXIST') {
+      return response.status(404).send({
+        error: 'Estudante não encontrado'
+      })
+    }
 
     return response.status(500).send({
       error: 'Erro interno no servidor',
