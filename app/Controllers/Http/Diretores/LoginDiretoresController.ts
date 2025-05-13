@@ -5,7 +5,7 @@ import { diretorMensagensValidacao } from 'App/Enums/ValidatorMessages'
 import ApiErrorException from 'App/Exceptions/ApiErrorException'
 import Hash from '@ioc:Adonis/Core/Hash'
 
-export default class LoginController {
+export default class LoginDiretoresController {
     public async handle({ auth, request, response }: HttpContextContract) {
         const dadosNecessarios = schema.create({
             email: schema.string([rules.email()]),

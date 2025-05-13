@@ -4,7 +4,7 @@ import { rules, schema } from '@ioc:Adonis/Core/Validator'
 import { diretorMensagensValidacao } from 'App/Enums/ValidatorMessages'
 import ApiErrorException from 'App/Exceptions/ApiErrorException'
 
-export default class DiretorCadastrarController {
+export default class CadastrarDiretoresController {
     public async handle({ request, response }: HttpContextContract) {
         const dadosNecessarios = schema.create({
             nome: schema.string(),
