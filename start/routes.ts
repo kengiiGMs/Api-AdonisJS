@@ -21,3 +21,4 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 import './routes/diretores'
+import './routes/estudantes'
