@@ -10,6 +10,7 @@
 */
 
 import Server from '@ioc:Adonis/Core/Server'
+import MultiAuthProfessorDiretor from 'App/Middleware/MultiAuthProfessorDiretor'
 
 /*
 |--------------------------------------------------------------------------
@@ -41,5 +42,6 @@ Server.middleware.register([
 |
 */
 Server.middleware.registerNamed({
-  auth: () => import('App/Middleware/Auth')
+  auth: () => import('App/Middleware/Auth'),
+  multiAuthProfessorDiretor: () => import('App/Middleware/MultiAuthProfessorDiretor')
 })
