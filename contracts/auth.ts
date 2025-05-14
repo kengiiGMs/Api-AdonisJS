@@ -7,6 +7,7 @@
 
 import Estudante from 'App/Models/Estudante'
 import Diretor from 'App/Models/Diretor'
+import Professor from 'App/Models/Professor'
 
 declare module '@ioc:Adonis/Addons/Auth' {
   /*
@@ -42,6 +43,11 @@ declare module '@ioc:Adonis/Addons/Auth' {
     diretor: {
       implementation: LucidProviderContract<typeof Diretor>
       config: LucidProviderConfig<typeof Diretor>
+    }
+
+    professor: {
+      implementation: LucidProviderContract<typeof Professor>
+      config: LucidProviderConfig<typeof Professor>
     }
   }
 
@@ -79,6 +85,11 @@ declare module '@ioc:Adonis/Addons/Auth' {
       implementation: OATGuardContract<'diretor', 'diretor'>
       config: OATGuardConfig<'diretor'>
       client: OATClientContract<'diretor'>
+    }
+    professor: {
+      implementation: OATGuardContract<'professor', 'professor'>
+      config: OATGuardConfig<'professor'>
+      client: OATClientContract<'professor'>
     }
   }
 }
