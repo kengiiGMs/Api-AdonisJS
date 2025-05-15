@@ -56,6 +56,12 @@ export default class ExceptionHandler extends HttpExceptionHandler {
       })
     }
 
+    if (error.code == 'E_ESTUDANTE_NO_EXIST') {
+      return response.status(404).send({
+        error: 'Estudante não encontrado'
+      })
+    }
+
     if (error.code == 'E_WRONG_CREDENTIAL') {
       return response.status(401).send({
         error: 'Erro crendenciais erradas'
@@ -77,6 +83,12 @@ export default class ExceptionHandler extends HttpExceptionHandler {
     if (error.code == 'E_DIRETOR_ACESS') {
       return response.status(403).send({
         error: 'Apenas diretores podem acessar esta rota'
+      })
+    }
+
+    if (error.code == 'E_ESTUDANTE_ACESS') {
+      return response.status(403).send({
+        error: 'Apenas estudantes podem acessar esta rota'
       })
     }
 
