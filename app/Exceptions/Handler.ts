@@ -62,9 +62,21 @@ export default class ExceptionHandler extends HttpExceptionHandler {
       })
     }
 
-    if (error.code == 'E_USUARIO_EXIST_REGISTER') {
-      return response.status(400).send({
-        error: 'Usuário já está registrado'
+    if (error.code == 'E_USUARIO_DIRETOR_CREATE') {
+      return response.status(500).send({
+        error: 'Erro ao criar usuário e diretor'
+      })
+    }
+
+    if (error.code == 'E_USUARIO_ESTUDANTE_CREATE') {
+      return response.status(500).send({
+        error: 'Erro ao criar usuário e estudante'
+      })
+    }
+
+    if (error.code == 'E_DIRETOR_ACESS') {
+      return response.status(403).send({
+        error: 'Apenas diretores podem acessar esta rota'
       })
     }
 

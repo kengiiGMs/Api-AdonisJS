@@ -1,40 +1,52 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Diretor from 'App/Models/Diretor'
 import Usuario from 'App/Models/Usuario'
-import { schema } from '@ioc:Adonis/Core/Validator'
+import Database from '@ioc:Adonis/Lucid/Database'
+import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import { diretorMensagensValidacao } from 'App/Enums/ValidatorMessages'
 import ApiErrorException from 'App/Exceptions/ApiErrorException'
 
 export default class CadastrarDiretoresController {
-    public async handle({ request, response, params }: HttpContextContract) {
+    public async handle({ request, response }: HttpContextContract) {
         const dadosNecessarios = schema.create({
             nome: schema.string([]),
+            email: schema.string([rules.email()]),
+            password: schema.string([rules.minLength(5), rules.confirmed()]),
+            tipo: schema.enum(['DIRETOR']),
         })
-
-        const usuarioId = Number(params.usuario_id);
 
         const dadosRequisicao = await request.validate({
             schema: dadosNecessarios,
             messages: diretorMensagensValidacao
         })
 
-        const usuarioExiste = await Usuario.findBy('id', usuarioId)
+        const emailExiste = await Usuario.findBy('email', dadosRequisicao.email)
 
-        if (!usuarioExiste) {
-            throw new ApiErrorException('Usuário não encontrado', 404, 'E_USUARIO_NO_EXIST')
+        if (emailExiste) {
+            throw new ApiErrorException('Esse email já está em uso', 400, 'E_EMAIL_EXIST')
         }
 
-        const diretorExiste = await Diretor.findBy('usuario_id', usuarioId)
+        const trx = await Database.transaction()
+        try {
+            const usuario = await Usuario.create({
+                email: dadosRequisicao.email,
+                password: dadosRequisicao.password,
+                tipo: dadosRequisicao.tipo,
+            }, { client: trx })
 
-        if (diretorExiste) {
-            throw new ApiErrorException('Usuário já está registrado', 400, 'E_USUARIO_EXIST_REGISTER')
+
+            const diretor = await Diretor.create({
+                nome: dadosRequisicao.nome,
+                usuario_id: usuario.id
+            }, { client: trx })
+
+            await trx.commit()
+
+            return response.json({ usuario, diretor })
+        } catch (error) {
+            console.error('Erro ao criar usuário e diretor:', error)
+            await trx.rollback()
+            throw new ApiErrorException('Erro ao criar usuário e diretor', 500, 'E_USUARIO_DIRETOR_CREATE')
         }
-
-        const diretor = await Diretor.create({
-            nome: dadosRequisicao.nome,
-            usuario_id: usuarioId
-        })
-
-        return response.json(diretor)
     }
 }
