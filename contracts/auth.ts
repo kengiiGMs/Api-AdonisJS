@@ -5,9 +5,7 @@
  * file.
  */
 
-import Estudante from 'App/Models/Estudante'
-import Diretor from 'App/Models/Diretor'
-import Professor from 'App/Models/Professor'
+import Usuario from 'App/Models/Usuario'
 
 declare module '@ioc:Adonis/Addons/Auth' {
   /*
@@ -35,19 +33,10 @@ declare module '@ioc:Adonis/Addons/Auth' {
     | different Lucid models.
     |
     */
-    estudante: {
-      implementation: LucidProviderContract<typeof Estudante>
-      config: LucidProviderConfig<typeof Estudante>
-    }
 
-    diretor: {
-      implementation: LucidProviderContract<typeof Diretor>
-      config: LucidProviderConfig<typeof Diretor>
-    }
-
-    professor: {
-      implementation: LucidProviderContract<typeof Professor>
-      config: LucidProviderConfig<typeof Professor>
+    usuario: {
+      implementation: LucidProviderContract<typeof Usuario>
+      config: LucidProviderConfig<typeof Usuario>
     }
   }
 
@@ -76,20 +65,10 @@ declare module '@ioc:Adonis/Addons/Auth' {
     | to authenticate requests.
     |
     */
-    estudante: {
-      implementation: OATGuardContract<'estudante', 'estudante'>
-      config: OATGuardConfig<'estudante'>
-      client: OATClientContract<'estudante'>
-    }
-    diretor: {
-      implementation: OATGuardContract<'diretor', 'diretor'>
-      config: OATGuardConfig<'diretor'>
-      client: OATClientContract<'diretor'>
-    }
-    professor: {
-      implementation: OATGuardContract<'professor', 'professor'>
-      config: OATGuardConfig<'professor'>
-      client: OATClientContract<'professor'>
+    usuario: {
+      implementation: OATGuardContract<'usuario', 'usuario'>
+      config: OATGuardConfig<'usuario'>
+      client: OATClientContract<'usuario'>
     }
   }
 }

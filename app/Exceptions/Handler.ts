@@ -50,13 +50,13 @@ export default class ExceptionHandler extends HttpExceptionHandler {
       })
     }
 
-    if (error.code == 'E_ESTUDANTE_NO_EXIST') {
+    if (error.code == 'E_USUARIO_NO_EXIST') {
       return response.status(404).send({
-        error: 'Estudante não encontrado'
+        error: 'Usuário não encontrado'
       })
     }
 
-    if (error.code == 'E_WRONG_CREDENITAL') {
+    if (error.code == 'E_WRONG_CREDENTIAL') {
       return response.status(401).send({
         error: 'Erro crendenciais erradas'
       })

@@ -1,16 +1,16 @@
 import type { AuthConfig } from '@ioc:Adonis/Addons/Auth'
 
 const authConfig: AuthConfig = {
-  guard: 'estudante',
+  guard: 'usuario',
 
   guards: {
-    estudante: {
+    usuario: {
       driver: 'oat',
 
       tokenProvider: {
         type: 'api',
         driver: 'database',
-        table: 'api_token_estudantes',
+        table: 'api_token_usuarios',
         foreignKey: 'user_id',
       },
 
@@ -18,41 +18,7 @@ const authConfig: AuthConfig = {
         driver: 'lucid',
         identifierKey: 'id',
         uids: ['email'],
-        model: () => import('App/Models/Estudante'),
-      },
-    },
-    diretor: {
-      driver: 'oat',
-
-      tokenProvider: {
-        type: 'api',
-        driver: 'database',
-        table: 'api_token_diretores',
-        foreignKey: 'user_id',
-      },
-
-      provider: {
-        driver: 'lucid',
-        identifierKey: 'id',
-        uids: ['email'],
-        model: () => import('App/Models/Diretor'),
-      },
-    },
-    professor: {
-      driver: 'oat',
-
-      tokenProvider: {
-        type: 'api',
-        driver: 'database',
-        table: 'api_token_professores',
-        foreignKey: 'user_id',
-      },
-
-      provider: {
-        driver: 'lucid',
-        identifierKey: 'id',
-        uids: ['email'],
-        model: () => import('App/Models/Professor'),
+        model: () => import('App/Models/Usuario'),
       },
     },
   },

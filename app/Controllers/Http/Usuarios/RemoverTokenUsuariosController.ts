@@ -1,8 +1,8 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export default class RemoverTokenEstudantesController {
-    public async handle({ request, response, auth }: HttpContextContract) {
-        await auth.use('estudante').revoke()
+    public async handle({ response, auth }: HttpContextContract) {
+        await auth.use('usuario').revoke()
         return response.json({ message: "Deslogado" })
     }
 }
