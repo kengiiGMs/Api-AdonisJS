@@ -1,7 +1,6 @@
 import type { CustomMessages } from "@ioc:Adonis/Core/Validator";
 
 export const usuarioMensagensValidacao: CustomMessages = {
-    "nome.required": "Nome é obrigatório",
     "email.required": "Email é obrigatório",
     "password.required": "Senha é obrigatória",
     "tipo.required": "Tipo é obrigatório",
@@ -9,5 +8,10 @@ export const usuarioMensagensValidacao: CustomMessages = {
     "password.confirmed": "As senhas não coincidem",
     "password_confirmation.confirmed": "As senhas não coincidem",
     "password.minLength": `A senha deve ter pelo menos 5 caracteres`,
+    exists: "{{ field }} inválido",
+}
+
+export const diretorMensagensValidacao: CustomMessages = {
+    "nome.required": "Nome é obrigatório",
     exists: "{{ field }} inválido",
 }
