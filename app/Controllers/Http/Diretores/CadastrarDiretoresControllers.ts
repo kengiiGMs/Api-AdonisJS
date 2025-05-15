@@ -24,6 +24,12 @@ export default class CadastrarDiretoresController {
             throw new ApiErrorException('Usuário não encontrado', 404, 'E_USUARIO_NO_EXIST')
         }
 
+        const diretorExiste = await Diretor.findBy('usuario_id', usuarioId)
+
+        if (diretorExiste) {
+            throw new ApiErrorException('Usuário já está registrado', 400, 'E_USUARIO_EXIST_REGISTER')
+        }
+
         const diretor = await Diretor.create({
             nome: dadosRequisicao.nome,
             usuario_id: usuarioId

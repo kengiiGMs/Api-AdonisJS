@@ -62,6 +62,12 @@ export default class ExceptionHandler extends HttpExceptionHandler {
       })
     }
 
+    if (error.code == 'E_USUARIO_EXIST_REGISTER') {
+      return response.status(400).send({
+        error: 'Usuário já está registrado'
+      })
+    }
+
     return response.status(500).send({
       error: 'Erro interno no servidor',
       detalhes: process.env.NODE_ENV === 'development' ? {
