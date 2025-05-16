@@ -10,7 +10,7 @@ export default class BuscarEstudantesController {
             throw new ApiErrorException('Id não encontrado na url', 404, 'E_ID_NO_EXIST')
         }
 
-        const estudante = await Estudante.findBy('id', estudanteId);
+        const estudante = await Estudante.query().where('usuario_id', estudanteId).preload('usuario').first();
 
         if (!estudante) {
             throw new ApiErrorException('Estudante não encontrado', 404, 'E_ESTUDANTE_NO_EXIST')

@@ -7,7 +7,7 @@ import { estudanteMensagensValidacao } from 'App/Enums/ValidatorMessages'
 import ApiErrorException from 'App/Exceptions/ApiErrorException'
 
 export default class CadastrarEstudantesController {
-    public async handle({ request, response, params }: HttpContextContract) {
+    public async handle({ request, response }: HttpContextContract) {
         const dadosNecessarios = schema.create({
             nome: schema.string([]),
             email: schema.string([rules.email()]),

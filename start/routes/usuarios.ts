@@ -1,6 +1,5 @@
 import Route from "@ioc:Adonis/Core/Route";
 
-Route.post('/usuarios', 'Usuarios/CadastrarUsuariosController')
 Route.post('/usuarios/login', 'Usuarios/LoginUsuariosController')
 
 Route.group(() => {
