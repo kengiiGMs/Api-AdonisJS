@@ -1,6 +1,6 @@
 # Api-AdonisJS
 Construindo uma API utilizando o framework `AdonisJS 5`
-- Foi desenvolvida uma API RESTful utilizando `AdonisJS 5`, com foco na gestão de alunos e diretores. A aplicação oferece operações completas de CRUD (criação, leitura, atualização e exclusão) para ambas as entidades.
+- Foi desenvolvida uma API RESTful utilizando `AdonisJS 5`, com foco na gestão de estudantes e diretores. A aplicação oferece operações completas de CRUD (criação, leitura, atualização e exclusão) para ambas as entidades.
 - Foram implementadas validações estruturadas do corpo das requisições, garantindo a integridade dos dados recebidos.
 - Para segurança, algumas rotas foram protegidas utilizando autenticação por token (API Token), restringindo o acesso a operações sensíveis apenas a usuários autorizados.
 
@@ -8,7 +8,11 @@ Construindo uma API utilizando o framework `AdonisJS 5`
 Projeto com o objetivo de compreender a estrutura do `AdonisJS 5`
 
 ### Conceitos aprendidos 
--
+- Comandos para a geração de Models | Controllers | Migrations | Middlewares de forma automática
+- Manipular e desenvolver as estruturas dos Models | Controllers | Migrations | Middlewares
+- Implementação e configuração da estrutura de autenticação (API TOKEN)
+- Implementação e configuração da estrutura de validação dos dados da requisição (Schema validator)
+- Implementação da estrutura de gerenciamento de erros
 
 ### Rodar o projeto 
 1. **Node.JS:**
@@ -29,10 +33,18 @@ npm install
 
 ``` 
 
-Rodar a api:
+Rodar as migrations:
 
 ``` 
 
 node ace migration:run
+
+```
+
+Rodar a api:
+
+``` 
+
+node ace serve --watch
 
 ```
